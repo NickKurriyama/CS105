@@ -8,15 +8,27 @@
 </head>
 <body>
     <div class = "container">
-        <h1 class = "title"> LAB 3 - VÕ TẠ HỮU HUY - 23520655</h1>
+        <h1 class = "title">
+                Võ Tạ Hữu Huy - 23520655 <br />
+                Mai Anh Khoa - 23520744 <br />
+                Phạm Quốc Nam - 23520984</h1>
         <select id = "Fractal">
             <option value = "Snowflake"> SnowFlake </option>
             <option value = "Minskowki"> Minskowki </option>
+            <option value = "Sierpinski_Triangles"> Sierpinski Triangles </option>
+            <option value = "Sierpinski_Carpet"> Sierpinski Carpet </option>
+            <option value = "Julia">Julia</option>
+            <option value = "Mandelbrot">Mandelbrot</option>
         </select>
-        <canvas id="webglcanvas" width="500" height="500"></canvas>
-        <div id="levelDisplay">
+               <div id="levelDisplay">
         Level: <span id="levelValue">0</span>
         </div>
+        <div class="canvas-wrapper">
+    <canvas id="webglcanvas" width="500" height="500"></canvas>
+        </div>
+        </div>
+</div>
+ 
         <script>
             let script;
             document.getElementById("Fractal").addEventListener("change", function() {

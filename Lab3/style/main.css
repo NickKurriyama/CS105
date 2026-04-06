@@ -1,11 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&display=swap');
+
+:root {
+    --bg:       #f4f5f7;
+    --surface:  #ffffff;
+    --border:   #dde1ea;
+    --accent:   #3b6ef5;
+    --accent-2: #e0426a;
+    --accent-3: #0ea882;
+    --text:     #3a3f52;
+    --text-dim: #8a90a4;
+    --text-hi:  #1a1e2e;
+    --radius:   8px;
+    --mono:     'IBM Plex Mono', monospace;
+    --sans:     'IBM Plex Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 36px 20px 60px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+
+.title {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    text-align: center;
+    line-height: 1.9;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 20px;
+    background: var(--surface);
+    width: 100%;
+}
+
+#Fractal {
+    appearance: none;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-hi);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    padding: 10px 40px 10px 16px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    width: 100%;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%233b6ef5' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+#Fractal:hover { border-color: var(--accent); }
+#Fractal:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(59,110,245,0.12); }
+
+.canvas-wrapper {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+#webglcanvas {
+    display: block;
+    width: 520px;
+    height: 520px;
+    cursor: crosshair;
+}
+
 #levelDisplay {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    color: white;
-    font-size: 20px;
-    font-family: Arial;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 8px 12px;
-    border-radius: 8px;
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: -8px;
+}
+#levelValue {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 10px;
+    color: var(--accent);
+    font-weight: 500;
+    min-width: 2ch;
+    text-align: center;
+}
+
+.fractal-info {
+    width: 100%;
+    max-width: 520px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+}
+.fractal-info span {
+    font-size: 0.6rem;
+    color: var(--text-dim);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 3px 10px;
+}
+.fractal-info span:first-child { color: var(--accent-3); }
+.fractal-info .hint { font-style: italic; }
+
+.julia-presets {
+    width: 100%;
+    max-width: 520px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+}
+.preset-btn {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--text-dim);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 4px 14px;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.preset-btn:hover { color: var(--text-hi); border-color: #b0b8cc; }
+.preset-btn.active { color: #fff; background: var(--accent-2); border-color: var(--accent-2); }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+@media (max-width: 560px) {
+    #webglcanvas { width: 100vw; height: 100vw; max-width: 100%; }
+    .canvas-wrapper { width: 100%; }
 }
