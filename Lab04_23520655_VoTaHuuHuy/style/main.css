@@ -1,0 +1,35 @@
+body{
+    font-family:Times New Roman, sans-serif;
+    margin: 0;
+    text-align: center;
+}
+
+#Object{
+    margin: 0 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color:rgb(0, 0, 128);
+    color: aliceblue;
+}
+
+#Object:hover{
+    background-color: rgb(0, 0, 255);
+}
+
+#Object:active{
+    background-color: rgb(0, 0, 255);
+    transform: translateY(2px);
+}
+
+#Object:focus{
+    outline: none;
+    border-color: lightblue;
+}
+
+#Object option {
+    background-color: rgb(0, 0, 128);
+    color: white;
+}
