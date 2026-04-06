@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="style/main.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- <script src="src/main.js"></script> -->
+</head>
+<body>
+    <div class = "container">
+        <h1 class = "title"> LAB 3 - VÕ TẠ HỮU HUY - 23520655</h1>
+        <select id = "Object">
+            <option value = "box"> Box </option>
+            <option value = "face"> Face </option>
+        </select>
+        <script>
+            let script;
+            document.getElementById("Object").addEventListener("change", function() {
+                if (script) document.body.removeChild(script);
+
+                if (window.currentAnimation) cancelAnimationFrame(window.currentAnimation);
+                document.querySelectorAll("canvas").forEach(c => c.remove());
+
+                script = document.createElement("script");
+                script.src = "src/" + this.value + ".js";
+                document.body.appendChild(script);
+            });
+            document.getElementById("Object").dispatchEvent(new Event("change"));
+        </script>
+    </div>
+</body>
+</html>
